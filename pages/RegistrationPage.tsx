@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {Alert, KeyboardAvoidingView, Platform, StyleSheet} from 'react-native';
+import {Alert, StyleSheet} from 'react-native';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {useFormik} from 'formik';
 
 import {Block} from '../styled/Block';
@@ -85,9 +86,9 @@ const RegistrationPage = () => {
   };
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      style={styles.container}>
+    <KeyboardAwareScrollView
+      contentContainerStyle={styles.scrollContainer}
+      keyboardShouldPersistTaps="handled">
       <Block
         flex={1}
         bg={'white'}
@@ -182,13 +183,14 @@ const RegistrationPage = () => {
           />
         </Block>
       </Block>
-    </KeyboardAvoidingView>
+    </KeyboardAwareScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  scrollContainer: {
+    flexGrow: 1,
+    justifyContent: 'center',
   },
 });
 export default RegistrationPage;
