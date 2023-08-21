@@ -33,6 +33,8 @@ const StyledButton = styled.TouchableOpacity<ButtonInterface>`
   alignItems && `alignItems: ${alignItems}`};
   ${({alignSelf}): string | undefined =>
   alignSelf && `align-self: ${alignSelf}`};
+  ${({marginTop}): string | undefined =>
+      marginTop && `margin-top: ${marginTop}`};
   ${({shadowColor}): string | undefined =>
   shadowColor && `shadow-color: ${shadowColor}`};
   ${({opacity}): string | undefined => opacity && `opacity: ${opacity}`};

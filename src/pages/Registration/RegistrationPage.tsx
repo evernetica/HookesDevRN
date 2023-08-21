@@ -3,17 +3,17 @@ import {Alert, StyleSheet} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {useFormik} from 'formik';
 
-import {Block} from '../components/simpleComponents/Block';
-import {Text} from '../components/simpleComponents/Text';
-import {Button} from '../components/simpleComponents/Button';
-import FormField from '../components/simpleComponents/FormField';
-import UnderlinedButton from '../components/combinedComponents/UnderlinedButton';
+import {Block} from '../../components/simpleComponents/Block';
+import {Text} from '../../components/simpleComponents/Text';
+import {Button} from '../../components/simpleComponents/Button';
+import FormField from '../../components/simpleComponents/FormField';
+import UnderlinedButton from '../../components/combinedComponents/UnderlinedButton';
 
-import SignInButton from '../components/combinedComponents/SingInButton';
+import SignInButton from '../../components/combinedComponents/SingInButton';
 
-import Google from '../icons/Google.svg';
-import Apple from '../icons/Apple.svg';
-import ArrowRight from '../icons/arrow-right.svg';
+import Google from '../../assets/icons/Google.svg';
+import Apple from '../../assets/icons/Apple.svg';
+import ArrowRight from '../../assets/icons/arrow-right.svg';
 
 const RegistrationPage = () => {
   const [formFieldsStates, setFormFieldsStates] = useState([
