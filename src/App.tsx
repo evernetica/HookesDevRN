@@ -13,34 +13,44 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createStackNavigator} from '@react-navigation/stack';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
-import RegistrationPage from './pages/RegistrationPage';
+import RegistrationPage from './pages/Registration/RegistrationPage';
+import Tutorial from './pages/Tutorial/Tutorial';
 import DrawerHeader from './components/combinedComponents/DrawerHeader';
+import {StyledSafeArea} from "./components/simpleComponents/StyledSafeArea";
 
 const Stack = createStackNavigator();
 
 function App(): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.white,
-  };
-  return (
-    <NavigationContainer>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen
-          name="Registration"
-          component={RegistrationPage}
-          options={({navigation}) => ({
-            header: ({scene, previous}) => (
-              <DrawerHeader navigation={navigation} />
-            ),
-          })}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+    const isDarkMode = useColorScheme() === 'dark';
+    const backgroundStyle = {
+        backgroundColor: isDarkMode ? Colors.darker : Colors.white,
+    };
+    return (
+        <StyledSafeArea>
+            <NavigationContainer>
+                <StatusBar
+                    barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+                    backgroundColor={backgroundStyle.backgroundColor}
+                />
+                <Stack.Navigator initialRouteName="Tutorial">
+                    <Stack.Screen
+                        name="Registration"
+                        component={RegistrationPage}
+                        options={({navigation}) => ({
+                            header: () => (
+                                <DrawerHeader navigation={navigation}/>
+                            ),
+                        })}
+                    />
+                    <Stack.Screen
+                        name="Tutorial"
+                        component={Tutorial}
+                        options={{headerShown: false}}
+                    />
+                </Stack.Navigator>
+            </NavigationContainer>
+        </StyledSafeArea>
+    );
 }
+
 export default App;

@@ -3,8 +3,8 @@ import {TouchableOpacity} from 'react-native';
 
 import {Block} from '../simpleComponents/Block';
 
-import GoBackButton from '../../icons/go-back.svg';
-import Hookes from '../../icons/HOOKES.svg';
+import GoBackButton from '../../assets/icons/go-back.svg';
+import Hookes from '../../assets/icons/HOOKES.svg';
 
 const DrawerHeader = ({navigation}) => {
   return (
@@ -13,7 +13,8 @@ const DrawerHeader = ({navigation}) => {
       bg={'white'}
       justifyContent={'center'}
       alignItems={'flex-end'}
-      height={'90px'}>
+      // height={'90px'}
+    >
       <Block
         flexDirection={'row'}
         justifyContent={'center'}
