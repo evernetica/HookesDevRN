@@ -1,5 +1,5 @@
 import {css} from 'styled-components/native';
-import {MarginTypes} from '../types/MarginTypes';
+import {MarginTypes} from '../../types/MarginTypes';
 
 export const MarginStyle = (props: MarginTypes) => css`
   margin-top: ${typeof props.marginTop === 'number'

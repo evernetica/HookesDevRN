@@ -13,11 +13,11 @@ import {
   TextInputProps,
 } from 'react-native';
 
-import {PaddingTypes} from '../types/PaddingTypes';
+import {PaddingTypes} from '../../types/PaddingTypes';
 import {PaddingStyle} from './PaddingStyle';
-import Eye from '../icons/open-eye.svg';
-import EyeClosed from '../icons/closed-eye.svg';
-import ErrorCircle from '../icons/error-circle.svg';
+import Eye from '../../icons/open-eye.svg';
+import EyeClosed from '../../icons/closed-eye.svg';
+import ErrorCircle from '../../icons/error-circle.svg';
 
 type TextInputType = {
   header: string;

@@ -1,8 +1,8 @@
 import React, {ReactElement} from 'react';
 
-import {Block} from '../styled/Block';
-import {Text} from '../styled/Text';
-import {Button} from '../styled/Button';
+import {Block} from '../simpleComponents/Block';
+import {Text} from '../simpleComponents/Text';
+import {Button} from '../simpleComponents/Button';
 
 interface SignInButtonProps {
   Icon: React.FC;

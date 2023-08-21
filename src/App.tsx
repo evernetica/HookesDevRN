@@ -10,12 +10,13 @@ import 'react-native-gesture-handler';
 import {StatusBar, useColorScheme} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
+import {createStackNavigator} from '@react-navigation/stack';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 import RegistrationPage from './pages/RegistrationPage';
-import DrawerHeader from './components/DrawerHeader';
+import DrawerHeader from './components/combinedComponents/DrawerHeader';
 
-const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -28,8 +29,8 @@ function App(): JSX.Element {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <Drawer.Navigator initialRouteName="Home">
-        <Drawer.Screen
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen
           name="Registration"
           component={RegistrationPage}
           options={({navigation}) => ({
@@ -38,7 +39,7 @@ function App(): JSX.Element {
             ),
           })}
         />
-      </Drawer.Navigator>
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
