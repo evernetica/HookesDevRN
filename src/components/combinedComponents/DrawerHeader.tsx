@@ -1,10 +1,10 @@
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
 
-import {Block} from '../styled/Block';
+import {Block} from '../simpleComponents/Block';
 
-import GoBackButton from '../icons/go-back.svg';
-import Hookes from '../icons/HOOKES.svg';
+import GoBackButton from '../../icons/go-back.svg';
+import Hookes from '../../icons/HOOKES.svg';
 
 const DrawerHeader = ({navigation}) => {
   return (

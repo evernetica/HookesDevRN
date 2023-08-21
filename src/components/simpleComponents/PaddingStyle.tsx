@@ -1,5 +1,5 @@
 import {css} from 'styled-components/native';
-import {PaddingTypes} from '../types/PaddingTypes';
+import {PaddingTypes} from '../../types/PaddingTypes';
 
 export const PaddingStyle = (props: PaddingTypes) => css`
   padding-top: ${typeof props.paddingTop === 'number'

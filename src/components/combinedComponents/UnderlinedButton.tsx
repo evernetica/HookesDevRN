@@ -1,7 +1,7 @@
 import React, {ReactElement} from 'react';
 
-import {Text} from '../styled/Text';
-import {Button} from '../styled/Button';
+import {Text} from '../simpleComponents/Text';
+import {Button} from '../simpleComponents/Button';
 
 interface UnderlinedButtonProps {
   text: string;
