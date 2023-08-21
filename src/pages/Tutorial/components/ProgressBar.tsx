@@ -4,9 +4,12 @@ import {Animated} from 'react-native';
 import {Block} from '../../../components/simpleComponents/Block';
 import {colors} from "../../../components/colors";
 
-const ProgressBar = ({
-                         current, total
-                     }) => {
+const ProgressBar = (
+    {
+        current,
+        total
+    }
+) => {
     const [progress] = useState(new Animated.Value(0));
 
     useEffect(() => {
@@ -40,7 +43,6 @@ const ProgressBar = ({
             }, barWidth]}
             />
         </Block>
-
     );
 };
 
