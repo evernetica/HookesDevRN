@@ -1,82 +1,59 @@
 import React, {useState} from 'react';
-import {Alert, StyleSheet} from 'react-native';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import {useFormik} from 'formik';
 import {useNavigation} from '@react-navigation/native';
+import {Alert, StyleSheet} from 'react-native';
+import {useFormik} from 'formik';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 import {Block} from '../../components/simpleComponents/Block';
 import {Text} from '../../components/simpleComponents/Text';
 import {Button} from '../../components/simpleComponents/Button';
 import FormField from '../../components/simpleComponents/FormField';
 import UnderlinedButton from '../../components/combinedComponents/UnderlinedButton';
-import {CommonDrawerHeader} from '../../components/combinedComponents/CommonDrawerHeader';
-
-import SignInButton from '../../components/combinedComponents/SingInButton';
 
 import {colors} from '../../components/colors';
 
-import Google from '../../assets/icons/Google.svg';
-import Apple from '../../assets/icons/Apple.svg';
 import ArrowRight from '../../assets/icons/arrow-right.svg';
+import {CommonDrawerHeader} from '../../components/combinedComponents/CommonDrawerHeader';
 
-const RegistrationPage = () => {
+const CreateAnAccountPage = () => {
   const [formFieldsStates, setFormFieldsStates] = useState([
+    {isDataCorrect: true},
     {isDataCorrect: true},
     {isDataCorrect: true},
   ]);
   const navigation = useNavigation();
 
-  const handleSingIn = () => {
-    console.log('Sign In');
-  };
-
-  const handleForgotPassword = () => {
-    console.log('Forgot Password');
-  };
-
-  const handleSignUp = () => {
-    navigation.navigate('CreateAnAccount');
+  const handleLogIn = () => {
+    navigation.navigate('Registration');
   };
 
   const formik = useFormik({
-    initialValues: {email: '', password: ''},
+    initialValues: {name: '', email: '', password: ''},
     onSubmit: () => {
-      Alert.alert('Successful login');
+      Alert.alert('Sign Up');
     },
     validate: values => {
       let errors = {};
 
       if (!values.email) {
-        errors = 'Email is required';
-        setFormFieldsStates(prevStates => [
-          {isDataCorrect: false},
-          prevStates[1],
-        ]);
+        errors.email = 'Email is required';
       } else if (!/\S+@\S+\.\S+/.test(values.email)) {
-        errors = 'Invalid email address';
-        setFormFieldsStates(prevStates => [
-          {isDataCorrect: false},
-          prevStates[1],
-        ]);
-      } else {
-        setFormFieldsStates(prevStates => [
-          {isDataCorrect: true},
-          prevStates[1],
-        ]);
+        errors.email = 'Invalid email address';
       }
 
       if (!values.password) {
-        errors = 'Password is required';
-        setFormFieldsStates(prevStates => [
-          prevStates[0],
-          {isDataCorrect: false},
-        ]);
-      } else {
-        setFormFieldsStates(prevStates => [
-          prevStates[0],
-          {isDataCorrect: true},
-        ]);
+        errors.password = 'Password is required';
       }
+
+      if (!values.name) {
+        errors.name = 'Name is required';
+      }
+
+      setFormFieldsStates([
+        {isDataCorrect: !errors.name},
+        {isDataCorrect: !errors.email},
+        {isDataCorrect: !errors.password},
+      ]);
 
       return errors;
     },
@@ -86,6 +63,7 @@ const RegistrationPage = () => {
       Alert.alert('Please correct the invalid fields');
     } else {
       await formik.submitForm();
+      console.log(formik.values.name);
       console.log(formik.values.email);
       console.log(formik.values.password);
     }
@@ -114,32 +92,17 @@ const RegistrationPage = () => {
           fontSize={26}
           fontWeight={'bold'}
           marginBottom={40}>
-          Hi, Welcome Back!
+          Create an account!
         </Text>
-        <Block gap={12}>
-          <SignInButton
-            text={'Google'}
-            handleSingIn={handleSingIn}
-            Icon={Google}
-          />
-          <SignInButton
-            text={'Apple'}
-            handleSingIn={handleSingIn}
-            Icon={Apple}
-          />
-        </Block>
-        <Block
-          justifyContent={'center'}
-          alignItems={'center'}
-          paddingVertical={'24px'}
-          flexDirection={'row'}
-          gap={12}>
-          <Block flex={1} height={'1px'} bg={colors.greyBorder} />
-          <Text color={colors.textGrey} fontSize={12}>
-            OR
-          </Text>
-          <Block flex={1} height={'1px'} bg={colors.greyBorder} />
-        </Block>
+        <FormField
+          header="Enter name"
+          value={formik.values.name}
+          onChangeText={formik.handleChange('name')}
+          onBlur={formik.handleBlur('name')}
+          errorMessage={'Please enter your name'}
+          placeholder="Enter name"
+          isDataCorrect={formFieldsStates[0].isDataCorrect}
+        />
         <FormField
           header="Email address"
           value={formik.values.email}
@@ -149,7 +112,7 @@ const RegistrationPage = () => {
           autoCapitalize="none"
           errorMessage={'Please enter email'}
           placeholder="Email address"
-          isDataCorrect={formFieldsStates[0].isDataCorrect}
+          isDataCorrect={formFieldsStates[1].isDataCorrect}
         />
         <FormField
           header="Password"
@@ -159,12 +122,7 @@ const RegistrationPage = () => {
           secureTextEntry={true}
           errorMessage={'Please enter password'}
           placeholder="Password"
-          isDataCorrect={formFieldsStates[1].isDataCorrect}
-        />
-        <UnderlinedButton
-          text={'Forgot Password'}
-          fontSize={13}
-          handleUnderlinedButtonFunction={handleForgotPassword}
+          isDataCorrect={formFieldsStates[2].isDataCorrect}
         />
         <Block paddingVertical={'40px'}>
           <Button
@@ -178,7 +136,7 @@ const RegistrationPage = () => {
               fontWeight={'bold'}
               textAlign={'center'}
               color={colors.textWhite}>
-              Log In
+              Sign Up
             </Text>
             <Block position={'absolute'} right={'16px'}>
               <ArrowRight width={24} height={24} />
@@ -191,12 +149,12 @@ const RegistrationPage = () => {
           gap={5}
           flexDirection={'row'}>
           <Text fontSize={15} color={colors.textGrey}>
-            Not a member?
+            Already have an account?
           </Text>
           <UnderlinedButton
-            text={'Sign Up'}
+            text={'Log in'}
             fontSize={15}
-            handleUnderlinedButtonFunction={handleSignUp}
+            handleUnderlinedButtonFunction={handleLogIn}
           />
         </Block>
       </Block>
@@ -211,4 +169,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-export default RegistrationPage;
+export default CreateAnAccountPage;
