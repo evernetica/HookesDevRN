@@ -3,19 +3,15 @@ import {useNavigation} from '@react-navigation/native';
 
 import {Block} from '../../../components/simpleComponents/Block';
 import {Text} from '../../../components/simpleComponents/Text';
-import {Button} from '../../../components/simpleComponents/Button';
 import UnderlinedButton from '../../../components/combinedComponents/UnderlinedButton';
-
+import BlackButton from '../../../components/combinedComponents/BlackButton';
 import Coupon from '../../../assets/icons/coupon.svg';
-
-import {colors} from '../../../components/colors';
-import ArrowRight from '../../../assets/icons/arrow-right.svg';
 
 const TutorialAddToSafariScreen = () => {
   const navigation = useNavigation();
 
   const handleLogIn = () => {
-    navigation.navigate('Registration');
+    navigation.navigate('WelcomeInScreen');
   };
 
   const handleAddToSafari = () => {
@@ -46,20 +42,10 @@ const TutorialAddToSafariScreen = () => {
         </Text>
       </Block>
       <Block alignItems={'center'} justifyContent={'center'} gap={25}>
-        <Button
-          width={'100%'}
-          height={'52px'}
-          borderRadius={'100px'}
-          justifyContent={'center'}
-          bg={colors.blackButtonBackground}
-          onPress={handleAddToSafari}>
-          <Text
-            fontWeight={'bold'}
-            textAlign={'center'}
-            color={colors.textWhite}>
-            Add to Safari
-          </Text>
-        </Button>
+        <BlackButton
+          text={'Add to Safari'}
+          handleButtonFunction={handleAddToSafari}
+        />
         <UnderlinedButton
           text={'No thanks'}
           fontSize={15}

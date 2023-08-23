@@ -6,18 +6,16 @@ import {useNavigation} from '@react-navigation/native';
 
 import {Block} from '../../components/simpleComponents/Block';
 import {Text} from '../../components/simpleComponents/Text';
-import {Button} from '../../components/simpleComponents/Button';
 import FormField from '../../components/simpleComponents/FormField';
 import UnderlinedButton from '../../components/combinedComponents/UnderlinedButton';
 import {CommonDrawerHeader} from '../../components/combinedComponents/CommonDrawerHeader';
-
+import BlackButtonWithArrow from '../../components/combinedComponents/BlackButtonWithArrow';
 import SignInButton from '../../components/combinedComponents/SingInButton';
 
 import {colors} from '../../components/colors';
 
 import Google from '../../assets/icons/Google.svg';
 import Apple from '../../assets/icons/Apple.svg';
-import ArrowRight from '../../assets/icons/arrow-right.svg';
 
 const RegistrationPage = () => {
   const [formFieldsStates, setFormFieldsStates] = useState([
@@ -167,23 +165,10 @@ const RegistrationPage = () => {
           handleUnderlinedButtonFunction={handleForgotPassword}
         />
         <Block paddingVertical={'40px'}>
-          <Button
-            width={'100%'}
-            height={'52px'}
-            borderRadius={'100px'}
-            justifyContent={'center'}
-            bg={colors.blackButtonBackground}
-            onPress={handleLogin}>
-            <Text
-              fontWeight={'bold'}
-              textAlign={'center'}
-              color={colors.textWhite}>
-              Log In
-            </Text>
-            <Block position={'absolute'} right={'16px'}>
-              <ArrowRight width={24} height={24} />
-            </Block>
-          </Button>
+          <BlackButtonWithArrow
+            text={'Log In'}
+            handleButtonFunction={handleLogin}
+          />
         </Block>
         <Block
           width={'100%'}
