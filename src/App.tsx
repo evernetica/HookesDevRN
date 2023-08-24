@@ -22,7 +22,6 @@ import { CommonDrawerHeader } from "./components/combinedComponents/CommonDrawer
 import WelcomeInScreen from './pages/Tutorial/components/WelcomeInScreen';
 
 const Stack = createStackNavigator();
-
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
   const backgroundStyle = {
