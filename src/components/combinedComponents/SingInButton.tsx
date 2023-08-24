@@ -4,6 +4,8 @@ import {Block} from '../simpleComponents/Block';
 import {Text} from '../simpleComponents/Text';
 import {Button} from '../simpleComponents/Button';
 
+import {colors} from '../colors';
+
 interface SignInButtonProps {
   Icon: React.FC;
   text: string;
@@ -20,7 +22,7 @@ const SignInButton: React.FC<SignInButtonProps> = ({
       <Block
         height={'52px'}
         width={'100%'}
-        bg={'#F2F3F6'}
+        bg={colors.lightGrey}
         gap={12}
         borderRadius={'100px'}
         flexDirection={'row'}

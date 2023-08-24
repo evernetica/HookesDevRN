@@ -16,41 +16,49 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import RegistrationPage from './pages/Registration/RegistrationPage';
 import Tutorial from './pages/Tutorial/Tutorial';
 import DrawerHeader from './components/combinedComponents/DrawerHeader';
-import {StyledSafeArea} from "./components/simpleComponents/StyledSafeArea";
+import {StyledSafeArea} from './components/simpleComponents/StyledSafeArea';
+import CreateAnAccountPage from './pages/CreateAnAccount/CreateAnAccountPage';
+import { CommonDrawerHeader } from "./components/combinedComponents/CommonDrawerHeader";
+import WelcomeInScreen from './pages/Tutorial/components/WelcomeInScreen';
 
 const Stack = createStackNavigator();
-
 function App(): JSX.Element {
-    const isDarkMode = useColorScheme() === 'dark';
-    const backgroundStyle = {
-        backgroundColor: isDarkMode ? Colors.darker : Colors.white,
-    };
-    return (
-        <StyledSafeArea>
-            <NavigationContainer>
-                <StatusBar
-                    barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-                    backgroundColor={backgroundStyle.backgroundColor}
-                />
-                <Stack.Navigator initialRouteName="Tutorial">
-                    <Stack.Screen
-                        name="Registration"
-                        component={RegistrationPage}
-                        options={({navigation}) => ({
-                            header: () => (
-                                <DrawerHeader navigation={navigation}/>
-                            ),
-                        })}
-                    />
-                    <Stack.Screen
-                        name="Tutorial"
-                        component={Tutorial}
-                        options={{headerShown: false}}
-                    />
-                </Stack.Navigator>
-            </NavigationContainer>
-        </StyledSafeArea>
-    );
+  const isDarkMode = useColorScheme() === 'dark';
+  const backgroundStyle = {
+    backgroundColor: isDarkMode ? Colors.darker : Colors.white,
+  };
+  return (
+    <StyledSafeArea>
+      <NavigationContainer>
+        <StatusBar
+          barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+          backgroundColor={backgroundStyle.backgroundColor}
+        />
+        <Stack.Navigator initialRouteName="Tutorial">
+          <Stack.Screen
+            name="Registration"
+            component={RegistrationPage}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Tutorial"
+            component={Tutorial}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="CreateAnAccount"
+            component={CreateAnAccountPage}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="WelcomeInScreen"
+            component={WelcomeInScreen}
+            options={{headerShown: false}}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </StyledSafeArea>
+  );
 }
 
 export default App;
