@@ -13,14 +13,14 @@ type CustomTextProps = {
     | 'underline'
     | 'line-through'
     | 'underline line-through';
-  marginTop?: string | number;
-  marginBottom?: string | number;
-  marginLeft?: string | number;
-  marginRight?: string | number;
-  paddingTop?: string | number;
-  paddingBottom?: string | number;
-  paddingLeft?: string | number;
-  paddingRight?: string | number;
+  marginTop?: string | number | undefined;
+  marginBottom?: string | number | undefined;
+  marginLeft?: string | number | undefined;
+  marginRight?: string | number | undefined;
+  paddingTop?: string | undefined;
+  paddingBottom?: string | undefined;
+  paddingLeft?: string | undefined;
+  paddingRight?: string | undefined;
 } & TextProps;
 
 const StyledText = styled.Text<CustomTextProps>`
@@ -30,23 +30,31 @@ const StyledText = styled.Text<CustomTextProps>`
   font-style: ${({fontStyle}) => fontStyle || 'normal'};
   text-align: ${({textAlign}) => textAlign || 'auto'};
   text-decoration-line: ${({textDecorationLine}) =>
-  textDecorationLine || 'none'};
-  margin-top: ${({marginTop}) =>
-  typeof marginTop === 'number' ? marginTop : marginTop || 0}px;
-  margin-bottom: ${({marginBottom}) =>
-  typeof marginBottom === 'number' ? marginBottom : marginBottom || 0}px;
-  margin-left: ${({marginLeft}) =>
-  typeof marginLeft === 'number' ? marginLeft : marginLeft || 0}px;
-  margin-right: ${({marginRight}) =>
-  typeof marginRight === 'number' ? marginRight : marginRight || 0}px;
-  padding-top: ${({paddingTop}) =>
-  typeof paddingTop === 'number' ? paddingTop : paddingTop || 0}px;
-  padding-bottom: ${({paddingBottom}) =>
-  typeof paddingBottom === 'number' ? paddingBottom : paddingBottom || 0}px;
-  padding-left: ${({paddingLeft}) =>
-  typeof paddingLeft === 'number' ? paddingLeft : paddingLeft || 0}px;
-  padding-right: ${({paddingRight}) =>
-  typeof paddingRight === 'number' ? paddingRight : paddingRight || 0}px;
+    textDecorationLine || 'none'};
+
+  ${({marginTop}): string | number | undefined =>
+    marginTop && `margin-top: ${marginTop}`};
+
+  ${({marginBottom}): string | number | undefined =>
+    marginBottom && `margin-bottom: ${marginBottom}`};
+
+  ${({marginLeft}): string | number | undefined =>
+    marginLeft && `margin-left: ${marginLeft}`};
+
+  ${({marginRight}): string | number | undefined =>
+    marginRight && `margin-right: ${marginRight}`};
+
+  ${({paddingTop}): string | undefined =>
+    paddingTop && `padding-top: ${paddingTop}`};
+
+  ${({paddingBottom}): string | undefined =>
+    paddingBottom && `padding-bottom: ${paddingBottom}`};
+
+  ${({paddingLeft}): string | undefined =>
+    paddingLeft && `padding-left: ${paddingLeft}`};
+
+  ${({paddingRight}): string | undefined =>
+    paddingRight && `padding-right: ${paddingRight}`};
 `;
 
 export const Text: React.FC<CustomTextProps> = ({children, ...rest}) => (

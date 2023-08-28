@@ -2,6 +2,8 @@ import React, {FC, useState} from 'react';
 
 import styled from 'styled-components/native';
 
+import {colors} from "../colors";
+
 import {Block} from './Block';
 import {Button} from './Button';
 import {Text} from './Text';
@@ -82,7 +84,7 @@ const FormField: FC<TextInputType> = ({
         flexDirection={'column'}
         height={'52px'}
         borderRadius={'100px'}
-        borderColor={isDataCorrect ? '#E4E7ED' : '#FF2727'}
+        borderColor={isDataCorrect ? colors.greyBorder : colors.redBorder}
         justifyContent={'center'}
         alignItems={'center'}
         borderWidth={'1px'}>
@@ -130,9 +132,7 @@ const FormField: FC<TextInputType> = ({
       {!isDataCorrect && (
         <Block flexDirection={'row'} gap={3} paddingTop={'3px'}>
           <ErrorCircle height={16} />
-          <Text color="red" marginLeft="16px">
-            {errorMessage}
-          </Text>
+          <Text color={colors.textError}>{errorMessage}</Text>
         </Block>
       )}
     </Block>
