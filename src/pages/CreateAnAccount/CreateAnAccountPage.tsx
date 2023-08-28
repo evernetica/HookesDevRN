@@ -6,13 +6,11 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 import {Block} from '../../components/simpleComponents/Block';
 import {Text} from '../../components/simpleComponents/Text';
-import {Button} from '../../components/simpleComponents/Button';
 import FormField from '../../components/simpleComponents/FormField';
 import UnderlinedButton from '../../components/combinedComponents/UnderlinedButton';
-
+import BlackButtonWithArrow from '../../components/combinedComponents/BlackButtonWithArrow';
 import {colors} from '../../components/colors';
 
-import ArrowRight from '../../assets/icons/arrow-right.svg';
 import {CommonDrawerHeader} from '../../components/combinedComponents/CommonDrawerHeader';
 
 const CreateAnAccountPage = () => {
@@ -125,23 +123,10 @@ const CreateAnAccountPage = () => {
           isDataCorrect={formFieldsStates[2].isDataCorrect}
         />
         <Block paddingVertical={'40px'}>
-          <Button
-            width={'100%'}
-            height={'52px'}
-            borderRadius={'100px'}
-            justifyContent={'center'}
-            bg={colors.blackButtonBackground}
-            onPress={handleLogin}>
-            <Text
-              fontWeight={'bold'}
-              textAlign={'center'}
-              color={colors.textWhite}>
-              Sign Up
-            </Text>
-            <Block position={'absolute'} right={'16px'}>
-              <ArrowRight width={24} height={24} />
-            </Block>
-          </Button>
+          <BlackButtonWithArrow
+            text={'Sign Up'}
+            handleButtonFunction={handleLogin}
+          />
         </Block>
         <Block
           width={'100%'}

@@ -19,6 +19,7 @@ import DrawerHeader from './components/combinedComponents/DrawerHeader';
 import {StyledSafeArea} from './components/simpleComponents/StyledSafeArea';
 import CreateAnAccountPage from './pages/CreateAnAccount/CreateAnAccountPage';
 import { CommonDrawerHeader } from "./components/combinedComponents/CommonDrawerHeader";
+import WelcomeInScreen from './pages/Tutorial/components/WelcomeInScreen';
 
 const Stack = createStackNavigator();
 
@@ -48,6 +49,11 @@ function App(): JSX.Element {
           <Stack.Screen
             name="CreateAnAccount"
             component={CreateAnAccountPage}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="WelcomeInScreen"
+            component={WelcomeInScreen}
             options={{headerShown: false}}
           />
         </Stack.Navigator>
